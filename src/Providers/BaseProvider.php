@@ -76,7 +76,7 @@ abstract class BaseProvider implements Countable
             'User-Agent'      => $value('HTTP_USER_AGENT'),
             'Accept'          => $value('HTTP_ACCEPT'),
             'Accept-Language' => $value('HTTP_ACCEPT_LANGUAGE'),
-            'Accept-Encoding' => 'identity',
+            'Accept-Encoding' => 'gzip, deflate',
             'Connection'      => 'close',
         );
     }
@@ -160,24 +160,16 @@ abstract class BaseProvider implements Countable
     protected function appendFiles()
     {
         foreach ($this->files as $file) {
-            if ($this->checkExternalFile($file))
-            {
+
+            if ($this->checkExternalFile($file)){
                 if (strpos($file, '//') === 0) $file = 'http:' . $file;
 
-                $headers = $this->headers;
-                foreach ($headers as $key => $value)
-                {
-                    $headers[$key] = $key . ': ' . $value;
-                }
-                $context = stream_context_create(array('http' => array(
-                    'ignore_errors' => true,
-                    'header' => implode("\r\n", $headers),
-                )));
+                $ch = curl_init($file);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //do not show in browser the response
+                curl_setopt($ch,CURLOPT_ENCODING , "");
+                $contents = curl_exec($ch);
 
-                $http_response_header = array(false);
-                $contents = file_get_contents($file, false, $context);
-
-                if (strpos($http_response_header[0], '200') === false)
+                if (curl_getinfo($ch,CURLINFO_HTTP_CODE) != "200")
                 {
                     throw new FileNotExistException("File '{$file}' does not exist");
                 }
