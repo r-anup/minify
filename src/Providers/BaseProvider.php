@@ -79,8 +79,8 @@ abstract class BaseProvider implements Countable
         $this->disable_mtime = $config['disable_mtime'] ?: false;
         $this->hash_salt = $config['hash_salt'] ?: '';
         
-        $this->substitute_patterns = isset($config['substitute_patterns']) ?: null;
-        $this->substitutes_replacements = isset($config['substitutes_replacements']) ?: null;
+        $this->substitute_patterns = $config['substitute_patterns'] ?: null;
+        $this->substitute_replacements = $config['substitute_replacements'] ?: null;
 
 
         $value = function($key)
@@ -193,7 +193,7 @@ abstract class BaseProvider implements Countable
                 $contents = file_get_contents($file);
             }
             
-            if(isset($this->substitute_patterns) && null != $this->substitute_patterns){
+            if(null != $this->substitute_patterns){
                 $contents = str_replace($this->substitute_patterns, $this->substitutes_replacements, $contents);
             }
 
