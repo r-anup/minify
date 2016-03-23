@@ -83,7 +83,7 @@ class Minify
    * @return string
    */
   public function stylesheet($file, $attributes = array()) {
-    $this->provider = new StyleSheet(public_path(), ['hash_salt' => $this->config['hash_salt'], 'disable_mtime' => $this->config['disable_mtime']]);
+    $this->provider = new JavaScript(public_path(), ['hash_salt' => $this->config['hash_salt'], 'disable_mtime' => $this->config['disable_mtime'], 'substitute_patterns' => $this->config['substitute_patterns'], 'substitute_replacements' => $this->config['substitute_replacements']]);
     $this->buildPath = $this->config['css_build_path'];
     $this->attributes = $attributes;
     $this->buildExtension = 'css';
@@ -99,7 +99,7 @@ class Minify
    * @return string
    */
   public function stylesheetDir($dir, $attributes = array()) {
-    $this->provider = new StyleSheet(public_path(), ['hash_salt' => $this->config['hash_salt'], 'disable_mtime' => $this->config['disable_mtime']]);
+    $this->provider = new StyleSheet(public_path(), ['hash_salt' => $this->config['hash_salt'], 'disable_mtime' => $this->config['disable_mtime'], 'substitute_patterns' => $this->config['substitute_patterns'], 'substitute_replacements' => $this->config['substitute_replacements']]);
     $this->buildPath = $this->config['css_build_path'];
     $this->attributes = $attributes;
     $this->buildExtension = 'css';
