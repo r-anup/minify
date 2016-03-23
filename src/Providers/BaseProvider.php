@@ -54,6 +54,18 @@ abstract class BaseProvider implements Countable
      * @var string
      */
     private $hash_salt;
+    
+    
+    /**
+     * @var array
+     */
+    private $substitute_patterns;
+
+    /**
+     * @var array
+     */
+    private $substitutes_replacements;
+
 
     /**
      * @param null $publicPath
@@ -66,6 +78,10 @@ abstract class BaseProvider implements Countable
 
         $this->disable_mtime = $config['disable_mtime'] ?: false;
         $this->hash_salt = $config['hash_salt'] ?: '';
+        
+        $this->substitute_patterns = $config['substitute_patterns'] ?: null;
+        $this->substitutes_replacements = $config['substitutes_replacements'] ?: null;
+
 
         $value = function($key)
         {
@@ -177,7 +193,9 @@ abstract class BaseProvider implements Countable
                 $contents = file_get_contents($file);
             }
             
-            $contents = str_replace(array('"/etc/designs'), array('http://static2.consumerreportscdn.org/etc/designs'), $contents);
+            if(null != $this->substitute_patterns){
+                $contents = str_replace($this->substitute_patterns, $this->substitutes_replacements, $contents);
+            }
 
             $this->appended .= $contents . "\n";
         }
