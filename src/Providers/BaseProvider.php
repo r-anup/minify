@@ -193,7 +193,7 @@ abstract class BaseProvider implements Countable
                 $contents = file_get_contents($file);
             }
             
-            if(null != $this->substitute_patterns){
+            if(isset($this->substitute_patterns) && null != $this->substitute_patterns){
                 $contents = str_replace($this->substitute_patterns, $this->substitutes_replacements, $contents);
             }
 
