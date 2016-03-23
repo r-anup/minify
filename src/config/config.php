@@ -24,8 +24,31 @@ return array(
     |
     */
 
+
+
     'ignore_environments' => array(
-	    'local',
+	    'local',/*'production',*/
+    ),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Substitute rules for string replacements
+    |--------------------------------------------------------------------------
+    |
+    | These patterns will be replaced by subsitute replacement strings
+    |
+    |
+    */
+
+    'substitute_patterns' => array(
+        '"/etc/designs',
+        '"/bin/"',
+    ),
+
+    'substitutes_replacements' => array(
+        '"http://static2.consumerreportscdn.org/etc/designs',
+        '"http://www.consumreports.org/bin/'
     ),
 
     /*
@@ -40,8 +63,8 @@ return array(
     |
     */
 
-    'css_build_path' => '/css/builds/',
-    'css_url_path' => '/css/builds/',
+    'css_build_path' => '/resources/builds/css/',
+    'css_url_path' => '/resources/builds/css/',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,8 +78,8 @@ return array(
     |
     */
 
-    'js_build_path' => '/js/builds/',
-    'js_url_path' => '/js/builds/', 
+    'js_build_path' => '/resources/builds/js/',
+    'js_url_path' => '/resources/builds/js/',
 
 	/*
     |--------------------------------------------------------------------------
