@@ -64,7 +64,7 @@ abstract class BaseProvider implements Countable
     /**
      * @var array
      */
-    private $substitutes_replacements;
+    private $substitute_replacements;
 
 
     /**
