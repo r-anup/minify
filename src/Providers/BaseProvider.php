@@ -176,6 +176,8 @@ abstract class BaseProvider implements Countable
             } else {
                 $contents = file_get_contents($file);
             }
+            
+            $contents = str_replace(array('"/etc/designs'), array('http://static2.consumerreportscdn.org/etc/designs'), $contents);
 
             $this->appended .= $contents . "\n";
         }
