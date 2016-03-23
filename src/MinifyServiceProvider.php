@@ -49,6 +49,8 @@ class MinifyServiceProvider extends ServiceProvider {
           'js_build_path' => config('minify.config.js_build_path'),
           'js_url_path' => config('minify.config.js_url_path'),
           'ignore_environments' => config('minify.config.ignore_environments'),
+          'substitute_patterns' => config('minify.config.substitute_patterns'),
+          'substitute_replacements' => config('minify.config.substitute_replacements'),
           'base_url' => config('minify.config.base_url'),
           'reverse_sort' => config('minify.config.reverse_sort'),
           'disable_mtime' => config('minify.config.disable_mtime'),
