@@ -194,7 +194,7 @@ abstract class BaseProvider implements Countable
             }
             
             if(null != $this->substitute_patterns){
-                $contents = str_replace($this->substitute_patterns, $this->substitutes_replacements, $contents);
+                $contents = str_replace($this->substitute_patterns, $this->substitute_replacements, $contents);
             }
 
             $this->appended .= $contents . "\n";
