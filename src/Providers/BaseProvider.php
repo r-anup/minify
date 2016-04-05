@@ -89,11 +89,11 @@ abstract class BaseProvider implements Countable
         };
 
         $this->headers = array(
-            'User-Agent'      => $value('HTTP_USER_AGENT'),
-            'Accept'          => $value('HTTP_ACCEPT'),
-            'Accept-Language' => $value('HTTP_ACCEPT_LANGUAGE'),
-            'Accept-Encoding' => 'gzip, deflate',
-            'Connection'      => 'close',
+            "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36",
+            "Accept" => "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Language" => "en-US,en;q=0.8,hi;q=0.6",
+            "Accept-Encoding" => "gzip, deflate",
+            "Connection"      => "close",
         );
     }
 
